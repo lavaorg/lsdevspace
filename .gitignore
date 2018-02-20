@@ -1,0 +1,5 @@
+/wsgo/bin
+/wsgo/pkg
+/wsgo/src/**
+/tools/bin
+/tools/pkg

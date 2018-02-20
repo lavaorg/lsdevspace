@@ -1,0 +1,3 @@
+export GOPATH=$PWD/wsgo
+export LSTOP=$PWD
+export PATH=$PATH:$LSTOP/bscript:$LSTOP/tools/bin
