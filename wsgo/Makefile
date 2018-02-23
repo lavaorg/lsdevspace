@@ -8,12 +8,14 @@ wk:
 
 build:
 	go install github.com/lavaorg/ninep
-	go install github.com/lavaorg/ninep/cmd/ufs
-	go install github.com/lavaorg/ninep/tools/ls
-	go install github.com/lavaorg/ninep/tools/cat
+	go install github.com/lavaorg/ninep/cmd/ufs/...
+	go install github.com/lavaorg/ninep/tools/...
 
 test:
-	go test -v -benchmem -timeout 20s github.com/lavaorg/ninep -run ^TestAttachOpenReaddir1
+	go test -v -benchmem -timeout 600s github.com/lavaorg/ninep 
+
+docs:
+	godoc -http :9090&
 
 wsinit:
 	mkdir -p src
