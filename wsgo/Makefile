@@ -7,9 +7,11 @@ wk:
 	go install github.com/lavaorg/ninep
 
 build:
-	go install github.com/lavaorg/ninep
-	go install github.com/lavaorg/ninep/cmd/ufs/...
-	go install github.com/lavaorg/ninep/tools/...
+	go install -tags httpstats github.com/lavaorg/warp9/ninep
+	go install github.com/lavaorg/warp9/warp9
+	go install github.com/lavaorg/warp9/servers/...
+	go install github.com/lavaorg/warp9/cmd/...
+	go install github.com/lavaorg/warp9/tools/...
 
 test:
 	go test -v -benchmem -timeout 600s github.com/lavaorg/ninep 
@@ -25,5 +27,8 @@ wsclean:
 wsnuke:
 	@rm -rf bin pkg lib src
 
+wspopulate:
+	go get github.com/lavaorg/warp9/ninep
+	
 gitstatus:
-	cd src/github.com/lavaorg/9p; git status -s
+	cd src/github.com/lavaorg/ninep; git status -s
