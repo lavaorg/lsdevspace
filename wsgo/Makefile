@@ -3,6 +3,7 @@
 help:
 	@echo Make targets:
 	@echo make build -- build entire repo
+	@echo make arm   -- build entire repo for arm
 	@echo make test  -- test packages
 	@echo make docs  -- run godoc -http in background
 	@echo make wsint -- init the build env
@@ -18,12 +19,20 @@ wk:
 
 build:
 	go install github.com/lavaorg/lrt/...
-	go install -tags httpstats github.com/lavaorg/warp/warp9
-	go install github.com/lavaorg/warp/nspace
-	go install github.com/lavaorg/warp/warpsrv
-	go install github.com/lavaorg/warp/servers/...
-	go install github.com/lavaorg/warp/cmd/...
+	go install github.com/lavaorg/warp/warp9
+	go install github.com/lavaorg/warp/wkit
 	go install github.com/lavaorg/warp/tools/...
+	go install github.com/lavaorg/dowarp/...
+
+# arm32
+ARM= GOARCH=arm GOOS=linux GOARM=7
+
+arm:
+	$(ARM) go install github.com/lavaorg/lrt/...
+	$(ARM) go install github.com/lavaorg/warp/warp9
+	$(ARM) go install github.com/lavaorg/warp/wkit
+	$(ARM) go install github.com/lavaorg/warp/tools/...
+	$(ARM) go install github.com/lavaorg/dowarp/...
 
 test:
 	go test -v -benchmem -timeout 600s github.com/lavaorg/warp/warp9
@@ -43,6 +52,14 @@ wsnuke:
 
 wspop:
 	go get github.com/lavaorg/warp/
+	go get github.com/lavaorg/lrt/
+	go get github.com/lavaorg/lua/
+	go get github.com/lavaorg/dowarp/
+	go get github.com/gin-gonic/gin/
 	
 gitstatus:
 	cd src/github.com/lavaorg/warp; git status -s
+
+armdist:
+	echo Distribute to raspberry
+	
