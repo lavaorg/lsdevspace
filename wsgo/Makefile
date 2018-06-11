@@ -34,6 +34,16 @@ arm:
 	$(ARM) go install github.com/lavaorg/warp/tools/...
 	$(ARM) go install github.com/lavaorg/dowarp/...
 
+# linux
+LIN=GOOS=linux
+
+linux:
+	$(LIN) go install github.com/lavaorg/lrt/...
+	$(LIN) go install github.com/lavaorg/warp/warp9
+	$(LIN) go install github.com/lavaorg/warp/wkit
+	$(LIN) go install github.com/lavaorg/warp/tools/...
+	$(LIN) go install github.com/lavaorg/dowarp/...
+
 test:
 	go test -v -benchmem -timeout 600s github.com/lavaorg/warp/warp9
 
