@@ -2,11 +2,12 @@
 
 help:
 	@echo Make targets:
-	@echo make build -- build entire repo
-	@echo make arm   -- build entire repo for arm
+	@echo make build -- build entire repo 
+	@echo make arm   -- cross build entire repo for linux-arm-v7
+	@echo make lin   -- cross build for linux-x86
 	@echo make test  -- test packages
-	@echo make docs  -- run godoc -http in background
-	@echo make wsint -- init the build env
+	@echo make docs  -- run godoc -http in background; port 9090
+	@echo make wsinit  -- init the build env
 	@echo make wsclean -- clean build env of buildable artifacts. src is safe
 	@echo make wsnuke  -- delete all build and src
 	@echo make wspop   -- populate src from git repo
@@ -14,8 +15,6 @@ help:
 	@echo 
 	@echo
 
-wk:
-	go install github.com/lavaorg/ninep
 
 build:
 	go install github.com/lavaorg/lrt/...
@@ -50,26 +49,24 @@ test:
 docs:
 	godoc -http :9090&
 
-wsinit:
+wsinit: 
 	mkdir -p src
-	go get github.com/lavaorg/lrt
-	go get github.com/lavaorg/warp
 
 wsclean:
 	@rm -rf bin pkg lib
+
 wsnuke:
 	@rm -rf bin pkg lib src
 
-wspop:
+wspop: 
 	go get github.com/lavaorg/warp/
 	go get github.com/lavaorg/lrt/
 	go get github.com/lavaorg/lua/
 	go get github.com/lavaorg/dowarp/
-	go get github.com/gin-gonic/gin/
 	
 gitstatus:
 	cd src/github.com/lavaorg/warp; git status -s
+	cd src/github.com/lavaorg/dowarp; git status -s
+	cd src/github.com/lavaorg/lrt; git status -s 
 
-armdist:
-	echo Distribute to raspberry
 	
