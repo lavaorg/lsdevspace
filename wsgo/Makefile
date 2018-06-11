@@ -6,7 +6,7 @@ help:
 	@echo make arm   -- cross build entire repo for linux-arm-v7
 	@echo make lin   -- cross build for linux-x86
 	@echo make test  -- test packages
-	@echo make docs  -- run godoc -http in background; port 9090
+	@echo make docs  -- run godoc -http in background, port 9090
 	@echo make wsinit  -- init the build env
 	@echo make wsclean -- clean build env of buildable artifacts. src is safe
 	@echo make wsnuke  -- delete all build and src
