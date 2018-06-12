@@ -43,6 +43,9 @@ linux:
 	$(LIN) go install github.com/lavaorg/warp/tools/...
 	$(LIN) go install github.com/lavaorg/dowarp/...
 
+xbuild:
+	docker run -v $(PWD):/wk -w /wk -e GOPATH=/wk lavahub/mkgobld:1.10.2-alpine make build
+
 test:
 	go test -v -benchmem -timeout 600s github.com/lavaorg/warp/warp9
 
