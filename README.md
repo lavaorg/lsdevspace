@@ -1,6 +1,6 @@
-# LightSpeed Dev Space
+# Warp Dev Space
 
-This is a top level development space for lightspeed builds. Common build scripts and inforamtion is here.  This enviornmenet will pull in any additional repositories as needed.  
+This is a top level example workspace for warp dev. Common build scripts and inforamtion is here.  This enviornmenet will pull in any additional repositories as needed.  
 
 Each unique build enviroment for a major component will have a top level directory under which the relevant repositories will be placed. 
 
